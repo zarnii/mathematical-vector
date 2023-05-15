@@ -6,8 +6,12 @@
 
 # Vector2D
 ## Конструкторы
-+ Vector2D(double x, double y)
-+ Vector2D()
++ ```C++
+  Vector2D(double x, double y);
+  ```
++ ```C++
+  Vector2D();
+  ```
 
 ## Поля
 + X - координата x.
@@ -30,9 +34,12 @@ Vector2D vec3 = vec1 + vec2; //Vector2D(5, 2)
 
 # Vector3D
 ## Конструкторы
-+ Vector3D(double x, double y, double z)
-+ Vector3D()
-
++ ```C++
+  Vector3D(double x, double y, double z)
+  ```
++ ```C++
+  Vector3D()
+  ```
 ## Поля
 + X - координата x.
 + Y - координата y.
@@ -51,5 +58,5 @@ Vector2D vec3 = vec1 + vec2; //Vector2D(5, 2)
 ```C++
 Vector3D vec1 = Vector3D(1,1,1);
 Vector3D vec2 = Vector3D(4,1,1);
-Vector3D vec3 = vec1 + vec2; //Vector2D(5,2,2)
+Vector3D vec3 = vec1 + vec2; //Vector3D(5,2,2)
 ```
