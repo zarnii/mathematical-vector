@@ -46,13 +46,45 @@ void vectors::Vector2D::Normalize()
 	this->y *= invert_len;
 }
 
+vectors::Vector2D vectors::Vector2D::NormalizeNew()
+{
+	double invert_len = 1 / this->Length();
+	double x = this->x * invert_len;
+	double y = this->y * invert_len;
+	return Vector2D(x, y);
+}
+
+
 //Операторы
-vectors::Vector2D vectors::Vector2D::operator+(vectors::Vector2D value)
+vectors::Vector2D vectors::Vector2D::operator+(Vector2D value)
 {
 	return Vector2D(this->x + value.x, 
 					this->y + value.y);
 }
 
+vectors::Vector2D vectors::Vector2D::operator-(Vector2D value)
+{
+	return Vector2D(this->x - value.x,
+					this->y - value.y);
+}
+
+vectors::Vector2D vectors::Vector2D::operator*(Vector2D value)
+{
+	return Vector2D(this->x * value.x,
+					this->y * value.y);
+}
+
+vectors::Vector2D vectors::Vector2D::operator*(double value)
+{
+	return Vector2D(this->x * value,
+					this->y * value);
+}
+
+vectors::Vector2D vectors::Vector2D::operator/(Vector2D value)
+{
+	return Vector2D(this->x / value.x,
+					this->y / value.y);
+}
 
 
 
@@ -105,10 +137,81 @@ void vectors::Vector3D::Normalize()
 	this->z *= invert_len;
 }
 
+vectors::Vector3D vectors::Vector3D::NormalizeNew()
+{
+	double invert_len = 1 / this->Length();
+	double x = this->x * invert_len;
+	double y = this->y * invert_len;
+	double z = this->z * invert_len;
+
+	return Vector3D(x, y, z);
+}
+
+
 //Операторы
-vectors::Vector3D vectors::Vector3D::operator+(vectors::Vector3D value)
+vectors::Vector3D vectors::Vector3D::operator+(Vector3D value)
 {
 	return Vector3D(this->x + value.x,
 					this->y + value.y,
 					this->z + value.z);
+}
+
+vectors::Vector3D vectors::Vector3D::operator-(Vector3D value)
+{
+	return Vector3D(this->x - value.x,
+					this->y - value.y, 
+					this->z - value.z);
+}
+
+vectors::Vector3D vectors::Vector3D::operator*(Vector3D value)
+{
+	return Vector3D(this->x * value.x,
+					this->y * value.y,
+					this->z * value.z);
+}
+
+vectors::Vector3D vectors::Vector3D::operator*(double value)
+{
+	return Vector3D(this->x * value,
+					this->y * value,
+					this->z * value);
+}
+
+vectors::Vector3D vectors::Vector3D::operator/(Vector3D value)
+{
+	return Vector3D(this->x / value.x,
+					this->y / value.y,
+					this->z / value.z);
+}
+
+
+//Функции namespace
+double vectors::Scalar(vectors::Vector2D vec1, vectors::Vector2D vec2)
+{
+	return(vec1.GetX() * vec2.GetX() + vec1.GetY() * vec2.GetY());
+}
+
+double vectors::Scalar(vectors::Vector3D vec1, vectors::Vector3D vec2)
+{
+	return(vec1.GetX() * vec2.GetX() + vec1.GetY() * vec2.GetY() + vec1.GetZ() * vec2.GetZ());
+}
+
+double vectors::Angle(vectors::Vector2D vec1, vectors::Vector2D vec2)
+{
+	double scalar = vectors::Scalar(vec1, vec2);
+
+	double len_vec1 = vec1.Length();
+	double len_vec2 = vec2.Length();
+
+	return scalar / (len_vec1 * len_vec2);
+}
+
+double vectors::Angle(vectors::Vector3D vec1, vectors::Vector3D vec2)
+{
+	double scalar = vectors::Scalar(vec1, vec2);
+
+	double len_vec1 = vec1.Length();
+	double len_vec2 = vec2.Length();
+
+	return scalar / (len_vec1 * len_vec2);
 }

@@ -19,9 +19,14 @@ namespace vectors
 		double Length();
 		double* GetCords();
 		void Normalize();
+		Vector2D NormalizeNew();
 		
 		//Операторы
 		Vector2D operator+(Vector2D value);
+		Vector2D operator-(Vector2D value);
+		Vector2D operator*(Vector2D value);
+		Vector2D operator*(double value);
+		Vector2D operator/(Vector2D value);
 	};
 
 	class Vector3D
@@ -41,8 +46,18 @@ namespace vectors
 		double Length();
 		double* GetCords();
 		void Normalize();
+		Vector3D NormalizeNew();
 
 		//Операторы
 		Vector3D operator+(Vector3D value);
+		Vector3D operator-(Vector3D value);
+		Vector3D operator*(Vector3D value);
+		Vector3D operator*(double value);
+		Vector3D operator/(Vector3D value);
 	};
+
+	double Scalar(Vector2D vec1, Vector2D vec2);
+	double Scalar(Vector3D vec1, Vector3D vec2);
+	double Angle(Vector2D vec1, Vector2D vec2);
+	double Angle(Vector3D vec1, Vector3D vec2);
 }
